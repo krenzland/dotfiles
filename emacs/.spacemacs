@@ -25,13 +25,14 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      ;; better-defaults
+     latex
+     c-c++
+     cscope
+     semantic
      emacs-lisp
      git
      markdown
      org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
      spell-checking
      syntax-checking
      version-control
@@ -39,6 +40,7 @@ values."
      html
      python
      rust
+     coq ;; custom layer!
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -250,6 +252,12 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq backup-directory-alist `(("." . "~/.saves")))
+  ;; ------------   C++    -------------------------
+  (setq-default dotspacemacs-configuration-layers
+                '((c-c++ :variables
+                         c-c++-default-mode-for-headers 'c++-mode)))
+  (setq-default dotspacemacs-configuration-layers
+                '((c-c++ :variables c-c++-enable-clang-support t)))
   ;; ------------ org mode -------------------------
   (setq org-agenda-files (list "~/Dropbox/org/org.org"))
   (setq org-default-notes-file (concat org-directory "/org.org"))
@@ -307,7 +315,7 @@ layers configuration. You are free to put any user code."
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (zenburn-theme monokai-theme solarized-theme web-mode toml-mode toc-org tagedit smeargle slim-mode shm scss-mode sass-mode racer pyvenv pytest pyenv-mode pip-requirements orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode jade-mode hy-mode htmlize hindent helm-pydoc helm-gitignore helm-flyspell helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flycheck evil-magit emmet-mode diff-hl cython-mode company-web company-statistics company-racer company-quickhelp company-ghc company-cabal company-anaconda company cmm-mode auto-yasnippet auto-dictionary anaconda-mode ac-ispell helm-core evil paradox helm-flx ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (helm-cscope xcscope stickyfunc-enhance srefactor disaster company-c-headers company-auctex cmake-mode clang-format auctex-latexmk auctex company-coq company-math math-symbol-lists zenburn-theme monokai-theme solarized-theme web-mode toml-mode toc-org tagedit smeargle slim-mode shm scss-mode sass-mode racer pyvenv pytest pyenv-mode pip-requirements orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode jade-mode hy-mode htmlize hindent helm-pydoc helm-gitignore helm-flyspell helm-css-scss helm-company helm-c-yasnippet haskell-snippets haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-rust flycheck-pos-tip flycheck-haskell flycheck evil-magit emmet-mode diff-hl cython-mode company-web company-statistics company-racer company-quickhelp company-ghc company-cabal company-anaconda company cmm-mode auto-yasnippet auto-dictionary anaconda-mode ac-ispell helm-core evil paradox helm-flx ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package spacemacs-theme spaceline smooth-scrolling restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))

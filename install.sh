@@ -4,6 +4,7 @@ set -o nounset
 
 install-dotfiles() {
     printf "Installing dotfiles!\n"
+    stow emacs
 }
 
 install-dependencies() {
