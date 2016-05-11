@@ -1,26 +1,32 @@
-#!/usr/bin/env bash
+##!/usr/bin/env bash
 set -o errexit
 set -o nounset
 
-install-dotfiles() {
+install_dotfiles() {
     printf "Installing dotfiles!\n"
+    stow emacs
 }
 
-install-dependencies() {
-    printf "Currently unsupported.\n"
+install_dependencies() {
+    printf "Feature install-dependencies currently not supported!.\n"
 }
 
-show-help() {
-    printf "Welcome to Lukas' dotfiles. \n"
-    printf "Command line options:\n"
+show_help() {
+    cat <<EOF
+Welcome to my configuration installer.
+Usage:
+-d | --dependencies    Install programs that I use often.
+-c | --config          Install my dotfiles.
+-h | --help            Show this document.
+EOF
 }
 
 main() {
     if [ "$1" = true ]; then
-        install-dependencies
+        install_dependencies
     fi
     if [ "$2" = true ]; then
-        install-dotfiles
+        install_dotfiles
     fi
 
 }
@@ -28,27 +34,32 @@ main() {
 installDep=false
 installDot=false
 
-while [[ $# -gt 1 ]]
-do
-key="$1"
+if [[ $# -eq 0 ]]; then
+    show_help
+fi
 
-case $key in
-    -d|--dependencies)
-    echo "-d"
-    installDep=true
-    ;;
-    -c|--config)
-    echo "-c"
-    installDot=true
-    ;;
-    -h|--help)
-    show-help
-    ;;
-    *)
-    printf "Unknown argument $1"\n
-    ;;
-esac
-shift
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+
+    case $key in
+        -d|--dependencies)
+            installDep=true
+            ;;
+        -c|--config)
+            installDot=true
+            ;;
+        -h|--help)
+            show_help
+            exit 1
+            ;;
+        *)
+            printf "Unknown argument $1\n"
+            show_help
+            exit 1
+            ;;
+    esac
+    shift
 done
 
 main $installDep $installDot
