@@ -37,6 +37,7 @@ values."
      version-control
      haskell
      html
+     latex
      python
      rust
      )
