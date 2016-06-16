@@ -11,6 +11,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+PATH=/home/lukas/bin/anaconda2/bin:$PATH
+
+export EDITOR="emacsclient -nw"
+
 ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
 source "${HOME}/bin/zgen/zgen.zsh"
 
@@ -19,7 +23,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/dnf
-    zgen oh-my-zsh plugins/colorize-man
+    zgen oh-my-zsh plugins/colored-man-pages
     zgen oh-my-zsh plugins/colorize
     zgen oh-my-zsh plugins/common-aliases
     zgen oh-my-zsh themes/blinks
