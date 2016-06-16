@@ -13,7 +13,7 @@ compinit
 
 PATH=/home/lukas/bin/anaconda2/bin:$PATH
 
-export EDITOR="emacsclient -nw"
+export EDITOR="emacsclient -nw --alternate-editor= "
 
 ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
 source "${HOME}/bin/zgen/zgen.zsh"
