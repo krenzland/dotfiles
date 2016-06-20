@@ -30,3 +30,8 @@ if ! zgen saved; then
     zgen save
 
 fi
+
+if [[ ! -a fortune ]]; then
+    fortune
+fi
+
