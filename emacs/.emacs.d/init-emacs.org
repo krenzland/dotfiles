@@ -1,0 +1,181 @@
+#+TITLE: Emacs init.
+* General packages
+** Package management
+Bootstrap use-package
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives
+             '(("melpa" . "https://melpa.org/packages/")
+              ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+
+(use-package diminish
+  :ensure t)
+#+END_SRC
+
+** Normal settings
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Lukas Krenz")
+(setq user-mail-address "lukas@krenz.land")
+
+(setq tab-width 4
+    indent-tabs-mode nil)
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq echo-keystrokes 0.1
+      use-dialog-box nil
+      visible-bell t)
+(show-paren-mode t)
+#+END_SRC   
+
+** Input
+Evil = love
+#+BEGIN_SRC emacs-lisp
+;; evil
+(use-package evil
+  :ensure t
+  :init
+  (progn
+    (setq evil-default-cursor t)
+    (evil-mode 1)))
+
+(use-package smartparens-config
+  :ensure smartparens
+  :init
+  (smartparens-global-mode))
+
+;; Autocompletion
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-company-mode)
+  :config
+  (define-key company-active-map (kbd "<tab>")
+    (lambda () (interactive) (company-complete-common-or-cycle 1)))
+  (use-package company-quickhelp
+    :ensure t
+    :config
+    (company-quickhelp-mode 1)))
+#+END_SRC
+** Theming
+#+BEGIN_SRC emacs-lisp
+(use-package solarized-theme
+  :ensure t)
+(load-theme 'solarized-light t)
+
+(use-package smart-mode-line
+  :ensure t
+  :config
+  (progn
+    (require 'smart-mode-line)
+    (smart-mode-line-enable)))
+#+END_SRC
+** Version Control
+#+BEGIN_SRC emacs-lisp
+;; git
+(use-package magit
+  :ensure t
+  :commands magit-status
+  :bind ("C-x g" . magit-status))
+#+END_SRC
+** Project Managment
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :ensure t
+)
+#+END_SRC
+** Comfort & Keybindings
+#+BEGIN_SRC emacs-lisp
+(use-package avy
+  :ensure t
+  :commands (avy-goto-word-1))
+
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode . "")
+  :bind
+  (:map ivy-mode-map
+   ("C-#" . ivy-avy))
+  :config
+  (progn
+  (ivy-mode 1)
+  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq ivy-use-virtual-buffers t)
+  ;; number of result lines to display
+  (setq ivy-height 10)
+  ;; does not count candidates
+  (setq ivy-count-format "")
+  ;; no regexp by default
+  (setq ivy-initial-inputs-alist nil)
+  ;; configure regexp engine.
+  (setq ivy-re-builders-alist
+	;; allow input not in order
+        '((t   . ivy--regex-ignore-order)))))
+
+(use-package counsel
+  :ensure t
+  :bind
+  (("M-x" . counsel-M-x)
+  ("C-s" . counsel-grep-or-swiper)
+  ("C-x C-f" . counsel-find-file)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+(use-package general
+  :ensure t
+  :config
+  (general-define-key
+   :states '(normal visual insert emacs)
+   :prefix "SPC"
+   :non-normal-prefix "C-SPC"
+
+   "SPC" '(avy-goto-word-1)))
+#+END_SRC
+* Writing
+** Org-Mode
+#+BEGIN_SRC emacs-lisp
+;; org-mode
+(use-package org
+  :ensure t
+  :config
+  (progn 
+     (setq org-src-fontify-natively t) ;; syntax highlighting for babel
+  ))
+#+END_SRC
+** LaTeX
+#+BEGIN_SRC emacs-lisp
+(use-package tex-site
+  :ensure auctex
+  :mode ("\\.tex\\'" . latex-mode)
+  :config
+  (setq TeX-parse-self t)
+  ;; Here we make auctex aware of latexmk and xelatexmk. We can use
+  ;; these instead of calling pdflatex, bibtex, pdflatex, pdflatex (or
+  ;; similar). I'll set latexmk as the default as there's really no
+  ;; reason to use pdflatex
+  (eval-after-load "tex"
+    '(add-to-list 'TeX-command-list '("latexmk" "latexmk -synctex=1 -shell-escape -pdf %s" TeX-run-TeX nil t :help "Process file with latexmk")))
+  (eval-after-load "tex"
+    '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk")))
+  (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
+#+END_SRC
+* Programming
