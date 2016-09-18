@@ -179,3 +179,9 @@ Evil = love
   (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
 #+END_SRC
 * Programming
+* Email
+
+#+BEGIN_SRC emacs-lisp
+(use-package notmuch
+  :ensure t)
+#+END_SRC

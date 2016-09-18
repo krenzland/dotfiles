@@ -20,7 +20,7 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (general avy which-key counsel ivy company-quickhelp company auctex company-auctex smartparens projectile smart-mode-line smart-mode-lie use-package solarized-theme powerline-evil magit helm))))
+    (notmuch general avy which-key counsel ivy company-quickhelp company auctex company-auctex smartparens projectile smart-mode-line smart-mode-lie use-package solarized-theme powerline-evil magit helm))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
