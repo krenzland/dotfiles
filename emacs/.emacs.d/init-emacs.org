@@ -149,7 +149,10 @@ Evil = love
    :non-normal-prefix "C-SPC"
 
    "SPC" '(avy-goto-word-1)))
+
+(winner-mode t)
 #+END_SRC
+
 * Writing
 ** Org-Mode
 #+BEGIN_SRC emacs-lisp
@@ -177,6 +180,7 @@ Evil = love
   (eval-after-load "tex"
     '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk")))
   (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
+
 #+END_SRC
 * Programming
 ** Haskell
