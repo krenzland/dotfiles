@@ -187,8 +187,20 @@ https://github.com/ericdanan/counsel-projectile
   :ensure t)
 #+END_SRC
 * Programming
-** Haskell
+** Python
+#+BEGIN_SRC emacs-lisp
+(use-package anaconda-mode
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
+(use-package company-anaconda
+  :ensure t
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends '(company-anaconda :with company-capf))))
+#+END_SRC
+** Haskell
 #+BEGIN_SRC emacs-lisp
 (use-package intero
   :ensure t
