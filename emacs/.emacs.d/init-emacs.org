@@ -95,6 +95,8 @@ Evil = love
   :bind ("C-x g" . magit-status))
 #+END_SRC
 ** Project Managment
+*** TODO Use counsel-projectile
+https://github.com/ericdanan/counsel-projectile
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
   :ensure t
@@ -181,6 +183,8 @@ Evil = love
     '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk")))
   (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
 
+(use-package ivy-bibtex
+  :ensure t)
 #+END_SRC
 * Programming
 ** Haskell
