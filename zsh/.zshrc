@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PATH=/home/lukas/bin/anaconda2/bin:$PATH
+PATH=/home/lukas/bin/anaconda2/bin:/home/lukaskrenz/anaconda2/bin:$PATH
 
 export EDITOR="emacsclient -nw --alternate-editor= "
 
