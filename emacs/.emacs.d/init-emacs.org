@@ -73,6 +73,10 @@ Evil = love
     :config
     (company-quickhelp-mode 1)))
 #+END_SRC
+
+;; Flycheck
+(use-package flycheck
+  :ensure t)
 ** Theming
 #+BEGIN_SRC emacs-lisp
 (use-package solarized-theme
@@ -206,6 +210,48 @@ https://github.com/ericdanan/counsel-projectile
   :ensure t
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
+#+END_SRC
+** Webmode
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t
+  :config
+  (progn 
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode)))
+  )
+#+END_SRC
+** Rust
+#+BEGIN_SRC emacs-lisp
+(use-package rust-mode
+   :ensure t
+)
+(use-package cargo
+   :ensure t
+   :config
+   (add-hook 'rust-mode-hook 'cargo-minor-mode))
+(use-package rustfmt
+   :ensure t
+)
+(use-package racer
+   :ensure t
+   :config
+   (progn
+   (setq racer-rust-src-path "~/src/rust/src")
+   (add-hook 'rust-mode-hook #'racer-mode)
+   (add-hook 'rust-mode-hook #'eldoc-mode)
+   (add-hook 'rust-mode-hook #'company-mode)
+))
+(use-package flycheck-rust
+   :ensure t
+   :config
+   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 #+END_SRC
 * Email
 
