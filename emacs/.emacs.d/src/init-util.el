@@ -8,4 +8,9 @@
   :commands (avy-goto-word-1))
 (winner-mode t)
 
+(defun init-open-config ()
+  "Opens the config file."
+  (interactive)
+  (find-file user-init-file))
+
 (provide 'init-util)
