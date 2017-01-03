@@ -1,15 +1,15 @@
 (use-package evil
   :ensure t
   :config
-  (progn
-    (setq evil-default-cursor t)
-    (evil-mode 1)))
+  (setq evil-default-cursor t)
+  (evil-mode 1))
 
 (use-package evil-escape
   :ensure t
+  :diminish (evil-escape-mode . "") 
   :init
-    (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-key-sequence "fd")
   :config
-    (evil-escape-mode))
+  (evil-escape-mode))
 
 (provide 'init-evil)
