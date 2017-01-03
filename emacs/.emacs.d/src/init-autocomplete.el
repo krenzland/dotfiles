@@ -1,8 +1,8 @@
 (use-package company
   :ensure t
+  :diminish (company-mode . "")
   :config
   (add-hook 'after-init-hook #'global-company-mode)
-  :config
   (define-key company-active-map (kbd "<tab>")
     (lambda () (interactive) (company-complete-common-or-cycle 1)))
   (use-package company-quickhelp
