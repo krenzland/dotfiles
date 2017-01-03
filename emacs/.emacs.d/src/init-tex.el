@@ -13,6 +13,11 @@
     '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk")))
   (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
 
+(use-package company-auctex
+  :ensure t
+  :config
+  (company-auctex-init))
+
 (use-package ivy-bibtex
   :ensure t)
 
