@@ -21,4 +21,5 @@
 
 ;; Move all backup files to central folder
 (setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory))))
+
 (provide 'init-settings)
