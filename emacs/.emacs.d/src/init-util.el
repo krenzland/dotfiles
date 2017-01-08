@@ -1,3 +1,5 @@
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+
 (use-package smartparens-config
   :ensure smartparens
   :diminish (smartparens-mode . "")

@@ -1,12 +1,13 @@
-(use-package solarized-theme
+(use-package color-theme-sanityinc-tomorrow
   :ensure t
   :config
-  (load-theme 'solarized-light t))
+  (color-theme-sanityinc-tomorrow-day))
 
 (use-package smart-mode-line
   :ensure t
+  :init
+  (setq sml/theme 'light)
   :config
-  (require 'smart-mode-line)
   (smart-mode-line-enable))
 
 (provide 'init-theme)
