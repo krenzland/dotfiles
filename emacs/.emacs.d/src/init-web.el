@@ -10,4 +10,8 @@
   ("\\.mustache\\'" . web-mode)
   ("\\.djhtml\\'" . web-mode))
  
+(use-package restclient
+  :ensure t
+  :commands 'restclient-mode)
+
 (provide 'init-web)
