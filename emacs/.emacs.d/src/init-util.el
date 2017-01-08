@@ -12,6 +12,14 @@
 
 (winner-mode t)
 
+(use-package uniquify
+  :init
+  (setq uniquify-buffer-name-style 'forward))
+
+(use-package saveplace
+  :init
+  (save-place-mode t))
+
 (use-package ranger
   :ensure t
   :config
