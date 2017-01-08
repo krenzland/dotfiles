@@ -15,7 +15,10 @@
       visible-bell t)
 (show-paren-mode t)
 
+;; Avoid cluttering init.el by customization
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+;; Move all backup files to central folder
+(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory))))
 (provide 'init-settings)
