@@ -43,6 +43,7 @@
 (require 'init-haskell)
 (require 'init-web)
 (require 'init-rust)
+(require 'init-cpp)
 
 ;; Communication
 (require 'init-mail)
