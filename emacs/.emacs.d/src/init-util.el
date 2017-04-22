@@ -25,6 +25,16 @@
   :config
   (ranger-override-dired-mode t))
 
+(use-package yaml-mode
+  :ensure t
+  :mode
+  ("\\.yml?\\'" . yaml-mode))
+
+(use-package toml-mode
+  :ensure t
+  :mode
+  ("\\.toml?\\'" . toml-mode))
+
 (defun init-open-config ()
   "Opens the config file."
   (interactive)
