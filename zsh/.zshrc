@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PATH=$HOME/.cargo/bin:/home/lukas/bin/anaconda2/bin:/home/lukaskrenz/anaconda2/bin:$PATH
+PATH=/usr/local/cuda-8.0/bin:$HOME/.cargo/bin:/home/lukas/bin/anaconda2/bin:/home/lukaskrenz/anaconda2/bin:$PATH
 
 export EDITOR="emacsclient -nw --alternate-editor= "
 
@@ -35,3 +35,12 @@ if [[ ! -a fortune ]]; then
     fortune
 fi
 
+
+# added by travis gem
+[ -f /home/lukas/.travis/travis.sh ] && source /home/lukas/.travis/travis.sh
+
+# Fix strange bug with matlab (otherwise plots don't work!)
+alias matlab="LD_PRELOAD=/usr/lib64/libstdc++.so.6 ~/bin/matlab/bin/matlab -desktop"  
+
+# Add CUDA-Header
+export CPATH=/usr/include/cuda/
