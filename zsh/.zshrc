@@ -44,3 +44,7 @@ alias matlab="LD_PRELOAD=/usr/lib64/libstdc++.so.6 ~/bin/matlab/bin/matlab -desk
 
 # Add CUDA-Header
 export CPATH=/usr/include/cuda/
+
+if module avail 2>&1 | grep -q "openmpi"; then
+   module load "mpi/openmpi-x86_64" -s
+fi
