@@ -1,0 +1,13 @@
+emacs/.emacs.d/backups
+emacs/.emacs.d/session*
+emacs/.emacs.d/tramp
+emacs/.emacs.d/smex-items
+emacs/.emacs.d/tramp
+emacs/.emacs.d/url
+emacs/.emacs.d/recentf*
+emacs/.emacs.d/places
+emacs/.emacs.d/elpa
+emacs/.emacs.d/eshell
+emacs/.emacs.d/games
+emacs/.emacs.d/bookmarks
+emacs/.emacs.d/anaconda-mode

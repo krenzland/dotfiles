@@ -6,6 +6,10 @@
   :init
   (smartparens-global-mode))
 
+(use-package ag
+  :ensure t
+)
+
 (use-package avy
   :ensure t
   :commands (avy-goto-word-1))

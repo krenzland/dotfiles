@@ -32,4 +32,5 @@
 (use-package smex
   :ensure t)
 
+
 (provide 'init-ivy)
