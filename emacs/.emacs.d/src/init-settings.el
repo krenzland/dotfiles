@@ -1,5 +1,6 @@
 (setq user-full-name "Lukas Krenz")
 (setq user-mail-address "lukas@krenz.land")
+(setq tramp-default-method "ssh") ;; Faster than scp
 
 (setq tab-width 4
     indent-tabs-mode nil)
