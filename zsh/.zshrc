@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PATH=/usr/local/cuda-8.0/bin:$HOME/.cargo/bin:/home/lukas/bin/anaconda2/bin:/home/lukaskrenz/anaconda2/bin:$PATH
+PATH=${PATH}:/usr/local/cuda-8.0/bin:$HOME/.cargo/bin:/home/lukas/bin/anaconda3/bin:/home/lukas/bin/intel/bin
 
 export EDITOR="emacsclient -nw --alternate-editor= "
 
@@ -22,7 +22,7 @@ if ! zgen saved; then
     zgen oh-my-zsh
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/dnf
+#    zgen oh-my-zsh plugins/dnf
     zgen oh-my-zsh plugins/colored-man-pages
     zgen oh-my-zsh plugins/colorize
     zgen oh-my-zsh plugins/common-aliases
@@ -43,13 +43,19 @@ fi
 alias matlab="LD_PRELOAD=/usr/lib64/libstdc++.so.6 ~/bin/matlab/bin/matlab -desktop"  
 
 # Add CUDA-Header
-export CPATH=/usr/include/cuda/
+export CPATH=/usr/include/cuda/${PATH}
 
-# VT
+# VTK
 export LD_LIBRARY_PATH=/home/lukas/src/vtkbuild/lib:${LD_LIBRARY_PATH}
-export PYTHONPATH=/home/lukas/src/VTKBlender:/home/lukas/src/vtkbuild/Wrapping/Python:/home/lukas/src/vtkbuild/lib:${PYTHONPATH}
-
+#export PYTHONPATH=/home/lukas/src/VTKBlender:/home/lukas/src/vtkbuild/Wrapping/Python:/home/lukas/src/vtkbuild/lib:${PYTHONPATH}
+alias python3=/home/lukas/bin/anaconda3/bin/python3
+alias jupyter3=/home/lukas/bin/anaconda3/bin/jupyter
+alias jupyter2=/home/lukas/bin/anaconda2/bin/jupyter
 
 if module avail 2>&1 | grep -q "openmpi"; then
    module load "mpi/openmpi-x86_64" -s
 fi
+
+LIBRARY_PATH=/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/../tbb/lib/ia32_lin/gcc4.4
+
+LD_LIBRARY_PATH=/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mpi/mic/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/intel64:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/intel64/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/intel64_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/ipp/lib/ia32:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/compiler/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/mkl/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/tbb/lib/ia32/gcc4.7:/home/lukas/bin/intel/debugger_2017/iga/lib:/home/lukas/bin/intel/debugger_2017/libipt/intel64/lib:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/lib/ia32_lin:/home/lukas/bin/intel/compilers_and_libraries_2017.4.196/linux/daal/../tbb/lib/ia32_lin/gcc4.4:${LD_LIBRARY_PATH}
