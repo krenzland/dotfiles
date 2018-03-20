@@ -6,8 +6,8 @@
    :config
    (add-hook 'rust-mode-hook 'cargo-minor-mode))
 
-(use-package rustfmt
-  :ensure t)
+;; (use-package rustfmt
+;;   :ensure t)
 
 (use-package racer
    :ensure t
