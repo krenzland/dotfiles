@@ -13,7 +13,7 @@ compinit
 PATH=${PATH}:$HOME/.local/bin/:$HOME/.cargo/bin:/home/lukas/bin/anaconda3/bin:/home/lukas/bin/intel/bin
 #PATH=${PATH}:/usr/local/cuda-8.0/bin:$HOME/.cargo/bin:/home/lukas/bin/anaconda3/bin:/home/lukas/bin/intel/bin
 
-export EDITOR="emacsclient -nw --alternate-editor= "
+export EDITOR="vi "
 
 ZGEN_RESET_ON_CHANGE=("${HOME}/.zshrc")
 source "${HOME}/bin/zgen/zgen.zsh"
@@ -53,7 +53,7 @@ alias jupyter3=/home/lukas/bin/anaconda3/bin/jupyter
 alias jupyter2=/home/lukas/bin/anaconda2/bin/jupyter
 
 if module avail 2>&1 | grep -q "openmpi"; then
-   module load "mpi/openmpi-x86_64" -s
+   module load "mpi/openmpi-x86_64"
 fi
 
 # Used functions
