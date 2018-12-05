@@ -11,7 +11,10 @@
     '(add-to-list 'TeX-command-list '("latexmk" "latexmk -synctex=1 -shell-escape -pdf %s" TeX-run-TeX nil t :help "Process file with latexmk")))
   (eval-after-load "tex"
     '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk")))
-  (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk"))))
+  (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+  (add-hook 'LaTeX-mode-hook (lambda () (reftex-mode))))
+  (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+
 
 (use-package company-auctex
   :ensure t
