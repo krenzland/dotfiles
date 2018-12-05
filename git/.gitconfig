@@ -1,0 +1,6 @@
+[user]
+	email = lukas@krenz.land
+	name = Lukas Krenz
+
+[alias]
+	root = rev-parse --show-toplevel
