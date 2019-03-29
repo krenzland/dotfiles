@@ -21,6 +21,9 @@
 (load custom-file)
 
 ;; Move all backup files to central folder
-(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory))))
+;(setq backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory))))
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
+(setq create-lockfiles nil)
 
 (provide 'init-settings)
