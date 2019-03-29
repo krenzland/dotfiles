@@ -1,3 +1,6 @@
 [submodule "zsh/bin/zgen"]
 	path = zsh/bin/zgen
 	url = https://github.com/tarjoilija/zgen.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
