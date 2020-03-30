@@ -38,7 +38,7 @@ function agr() {
     (cd $(git root) && ag $1)
 }
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH:${HOME}/.local/bin/
 export LD_LIBRARY_PATH=$HOME/lib:$HOME/lib64:$LD_LIBRARY_PATH
 export C_INCLUDE_PATH=$HOME/include:$C_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$HOME/include:$CPLUS_INCLUDE_PATH
@@ -58,10 +58,16 @@ function __sccs_settings() {
 
 }
 
+function __xps_settings() {
+    # Anaconda
+    PATH=~/bin/anaconda3/bin:$PATH
+}
 
 case "$(hostname)" in
     *sccs*)  __sccs_settings ;;
+    *xps*)  __xps_settings ;;
     *) echo "Default";;
 esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

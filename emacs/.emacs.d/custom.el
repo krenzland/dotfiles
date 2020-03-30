@@ -10,7 +10,7 @@
  '(org-agenda-files (quote ("~/Dropbox/org/hiwi.org")))
  '(package-selected-packages
    (quote
-    (ag toml-mode yaml-mode which-key web-mode use-package solarized-theme smex smartparens smart-mode-line rustfmt restclient ranger racer projectile powerline notmuch ivy-hydra ivy-bibtex intero general flycheck-rust evil-magit evil-escape counsel company-quickhelp company-auctex company-anaconda color-theme-sanityinc-tomorrow cargo avy))))
+    (dockerfile-mode cmake-mode jsx-mode rust-mode emmet-mode anaconda-mode auctex magit company ivy evil flycheck ag toml-mode yaml-mode which-key web-mode use-package solarized-theme smex smartparens smart-mode-line rustfmt restclient ranger racer projectile powerline notmuch ivy-hydra ivy-bibtex intero general flycheck-rust evil-magit evil-escape counsel company-quickhelp company-auctex company-anaconda color-theme-sanityinc-tomorrow cargo avy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
