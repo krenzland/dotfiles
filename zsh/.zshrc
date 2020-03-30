@@ -51,6 +51,11 @@ function __sccs_settings() {
     export I_MPI_CC="/usr/bin/gcc-9"
     export I_MPI_CXX="/usr/bin/g++-9"
     export I_MPI_F90="/usr/bin/gfortran-9"
+
+    # Spack
+    export SPACK_ROOT="${HOME}/src/spack/"
+    export PATH="${SPACK_ROOT}/bin:${PATH}"
+
 }
 
 
